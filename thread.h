@@ -68,7 +68,7 @@ class Thread {
             }
             return true;
         }
-    private:
+
         bool IsAlive() {
             int sig = pthread_kill(tid_, 0);
             if (ESRCH == sig) {
@@ -79,6 +79,7 @@ class Thread {
             return true;
         }
 
+    private:
         static void* hook(void* args) {
             reinterpret_cast<Thread*>(args)->Run();
             return NULL;
